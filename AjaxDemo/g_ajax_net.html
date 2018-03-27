@@ -15,25 +15,50 @@
 
 <script>
     $(function () {
-        $("#btn").click(function () {
-            $.ajax({
-                url: "TestWebService.asmx/GetStr",
-                type: "get",
-                data: { name: "qiang" },
-                dateType: "html",
-                success: function (data) {
-                    $("#content").html(data);
-                }
-            })
-        });
+        //$("#btn").click(function () {
+        //    $.ajax({
+        //        url: "TestWebService.asmx/GetStr",
+        //        type: "get",
+        //        data: { name: "qiang" },
+        //        dateType: "html",
+        //        success: function (data) {
+        //            $("#content").html(data);
+        //        }
+        //    })
+        //});
 
         //$("#btn").click(function () {
         //    $.ajax({
         //        url: "TestWebService.asmx/GetInfo",
         //        type: "get",
+        //        data: { name: "qiang.c.chen" },
+        //        dateType: "json",
         //        success: function (data) {
         //            debugger;
-        //            $("#content").text = data;
+        //            var result = JSON.parse(data);
+        //            var strHtml = "<span>";
+        //            strHtml += result.Name;
+        //            strHtml += "</span><br />";
+        //            strHtml += "<span>";
+        //            strHtml += result.Email;
+        //            strHtml += "</span>";
+        //            $("#content").html(strHtml);
+        //        }
+        //    })
+        //})
+        //$("#btn").click(function () {
+        //    var info = { Name: "qiang.c.chen", Email: "qiang.c.chen@accenture.com" };
+        //    var infoStr = JSON.stringify(info);
+        //    debugger
+        //    $.ajax({
+        //        url: "TestWebService.asmx/PostInfo",
+        //        type: "post",
+        //        contentType: "application/json",
+        //        data: '{"name":' + '"xue.yang"' + ',' + "userInfo" + ':' + infoStr + '}',
+        //        dateType: "html",
+        //        success: function (data) {
+        //            debugger;
+        //            console.log(data);
         //        }
         //    })
         //})

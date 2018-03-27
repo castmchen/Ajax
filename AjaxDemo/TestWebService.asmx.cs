@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -35,19 +36,21 @@ namespace AjaxDemo
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = true)]
-        public UserInfo GetInfo(string name)
+        public void GetInfo(string name)
         {
-            return new UserInfo
+            var result = new UserInfo
             {
                 Name = "qiang.c.chen",
                 Email = "qiang.c.chen@accenture.com"
             };
+            this.Context.Response.Write(JsonConvert.SerializeObject(result));
         }
 
         [WebMethod]
-        public string Post(string name, UserInfo userInfo)
+        [ScriptMethod(UseHttpGet = false)]
+        public string PostInfo(string name, UserInfo userInfo)
         {
-            Console.WriteLine(name.ToString());
+            //Console.WriteLine(name.ToString());
             Console.WriteLine("------------");
             Console.WriteLine(userInfo.Name.ToString() + userInfo.Email.ToString());
             return "success";
