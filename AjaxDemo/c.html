@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>getJSON方法处理数据</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div class="divFrame">
+        <div class="divTitile">
+            <input id="Button1" type="button" onclick="GetSendData()" class="btn" value="获取数据" />
+        </div>
+        <div class="divContent">
+            <div id="divTip"></div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    $(function () {
+        $("#Button1").click(function () {
+            $.getJSON("UserInfo.json", function (data) {
+                $("divTip").empty();
+                var strHTML = "";
+                $.each(data, function (InfoIndex, Info) {
+                    strHTML += "name:" + Info["name"] + "<br />";
+                    strHTML += "email:" + Info["email"] + "<hr>";
+                })
+                $("#divTip").html(strHTML);
+            })
+        })
+    })
+</script>

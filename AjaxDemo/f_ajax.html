@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ajax回调数据</title>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <form id="frmUserLogin"></form>
+</body>
+</html>
+
+<script>
+    $(function () {
+        $.ajax({
+            url: "login.html",
+            dataType: "html",
+            success: function (Html) {
+                $("#frmUserLogin").html(Html);
+                $("#btnLogin").click(function () {
+                    var strTxtName = encodeURI($("#txtName").val());
+                    var strTxtPass = encodeURI($("#txtPass").val());
+
+                    $.ajax({
+                        url: "login.aspx",
+                        type: "post",
+                        dataType: "html",
+                        data: { txtName: strTxtName, txtPass: strTxtPass },
+                        success: function (strValue) {
+                            if (strValue == "True") {
+                                $(".clsShow").html("success");
+                            } else {
+                                $("#divError").show().html("has error");
+                            }
+                        }
+                    })
+                })
+            }
+        });
+    })
+</script>

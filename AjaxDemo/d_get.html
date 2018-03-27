@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Get获取数据</title>
+    <style type="text/css">
+        body {
+            font-size: 13px;
+        }
+
+        .divFrame {
+            width: 260px;
+            border: solid 1px #666;
+        }
+
+            .divFrame .divTitile {
+                padding: 5px;
+                background-color: #eee;
+            }
+
+            .divFrame .divContent {
+                padding: 8px;
+            }
+
+                .divFrame .divContent .clsShow {
+                    font-size: 14px;
+                }
+
+        .btn {
+            border: #666 1px solid;
+            padding: 2px;
+            width: 80px;
+        }
+    </style>
+
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div class="divFrame">
+        <div class="divTitile">
+            <input id="Button1" type="button" onclick="GetSendData()" class="btn" value="获取数据" />
+        </div>
+        <div class="divContent">
+            <div id="divTip"></div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    $(function () {
+        $("#Button1").click(function () {
+            $.get("UserInfo.xml", function (data) {
+                $("#divTip").empty();
+                var strHtml = "";
+                $(data).find("user").each(function () {
+                    var that = $(this);
+                    strHtml += "name : " + that.find("name").text() + "<br />";
+                    strHtml += "email : " + that.find("email").text() + "<br />";
+                });
+                $("#divTip").html(strHtml);
+            })
+        })
+    })
+</script>

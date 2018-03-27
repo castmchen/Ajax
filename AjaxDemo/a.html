@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JavaScript实现AJAX功能</title>
+    <style type="text/css">
+        body {
+            font-size: 13px;
+        }
+
+        .divFrame {
+            width: 260px;
+            border: solid 1px #666;
+        }
+
+            .divFrame .divTitile {
+                padding: 5px;
+                background-color: #eee;
+            }
+
+            .divFrame .divContent {
+                padding: 8px;
+            }
+
+                .divFrame .divContent .clsShow {
+                    font-size: 14px;
+                }
+
+        .btn {
+            border: #666 1px solid;
+            padding: 2px;
+            width: 80px;
+        }
+    </style>
+
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div class="divFrame">
+        <div class="divTitile">
+            <input id="Button1" type="button" onclick="GetSendData()" class="btn" value="获取数据" />
+        </div>
+        <div class="divContent">
+            <div id="divTip"></div>
+        </div>
+    </div>
+</body>
+</html>
+
+<!--load method-->
+<script>
+    $(function (){
+        $("#Button1").click(function () {
+            $("#divTip").load("b.html");
+        })
+    })
+</script>
+
+<!--XMLHTTPRequest-->
+<!--<script>
+    var objXmlHttp = null;
+    function CreateXMLHttp() {
+        if (window.ActiveXObjcet) {
+            objXmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        } else {
+            if (window.XMLHttpRequest) {
+                objXmlHttp = new XMLHttpRequest();
+            } else {
+                aler("init XMLHttp error.");
+            }
+        }
+    }
+
+    function GetSendData() {
+        document.getElementById("divTip").innerHTML = "<span>正在获取中...</span>";
+        setTimeout(function () {
+            var strSendUrl = "b.html?date=" + Date();
+            CreateXMLHttp();
+            objXmlHttp.open("GET", strSendUrl, true);
+            objXmlHttp.onreadystatechange = function () {
+                if (objXmlHttp.readyState == 4) {
+                    if (objXmlHttp.status == 200) {
+                        document.getElementById("divTip").innerHTML = objXmlHttp.responseText;
+                    }
+                }
+            }
+            objXmlHttp.send(null); //send 发送设置的请求
+        }, 2000);
+    }
+</script>-->

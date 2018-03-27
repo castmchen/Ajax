@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        body {
+            font-size: 13px;
+        }
+
+        .divFrame {
+            width: 260px;
+            border: solid 1px #666;
+        }
+
+            .divFrame .divTitile {
+                padding: 5px;
+                background-color: #eee;
+            }
+
+            .divFrame .divContent {
+                padding: 8px;
+            }
+
+                .divFrame .divContent .clsShow {
+                    font-size: 14px;
+                }
+
+        .btn {
+            border: #666 1px solid;
+            padding: 2px;
+            width: 80px;
+        }
+    </style>
+
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+        <div class="divFrame">
+            <label>name</label>
+            <input type="text" id="txtName" value="" />
+            <div class="divTitile">
+                <input id="Button1" type="button" onclick="GetSendData()" class="btn" value="获取数据" />
+            </div>
+            <div class="divContent">
+                <div id="divTip"></div>
+            </div>
+        </div>
+</body>
+</html>
+
+<script>
+    $(function () {
+        $("#Button1").click(function () {
+            $.post("User_Info.aspx",
+                {
+                name: encodeURI($("#txtName").val())
+                },
+                function (data) {
+                    $("#divTip").empty().html(data);
+            })
+        })
+    })
+</script>

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>jquery ajax 调用web service数据</title>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <input type="button" id="btn" value="Get" />
+    <div id="content">
+
+    </div>
+</body>
+</html>
+
+<script>
+    $(function () {
+        $("#btn").click(function () {
+            $.ajax({
+                url: "TestWebService.asmx/GetStr",
+                type: "get",
+                data: { name: "qiang" },
+                dateType: "html",
+                success: function (data) {
+                    $("#content").html(data);
+                }
+            })
+        });
+
+        //$("#btn").click(function () {
+        //    $.ajax({
+        //        url: "TestWebService.asmx/GetInfo",
+        //        type: "get",
+        //        success: function (data) {
+        //            debugger;
+        //            $("#content").text = data;
+        //        }
+        //    })
+        //})
+    })
+</script>
